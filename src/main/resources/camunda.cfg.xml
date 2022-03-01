@@ -17,4 +17,6 @@
 <!--        <property name="mailServerPort" value="5025" />-->
     </bean>
 
+    <bean id="serviceTask" class="com.demo.StartDelegate"/>
+
 </beans>

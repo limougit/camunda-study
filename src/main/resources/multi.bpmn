@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1j80txa" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="multiDemo" isExecutable="true">
+    <bpmn:startEvent id="start">
+      <bpmn:extensionElements>
+        <camunda:executionListener class="" event="start" />
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0074ewn</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="end">
+      <bpmn:incoming>Flow_1yqawsv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="multi_user_task" name="多用户任务">
+      <bpmn:incoming>Flow_0074ewn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yqawsv</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics camunda:collection="${list}" />
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1yqawsv" sourceRef="multi_user_task" targetRef="end" />
+    <bpmn:sequenceFlow id="Flow_0074ewn" sourceRef="start" targetRef="multi_user_task" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="multiDemo">
+      <bpmndi:BPMNEdge id="Flow_1yqawsv_di" bpmnElement="Flow_1yqawsv">
+        <di:waypoint x="380" y="117" />
+        <di:waypoint x="452" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0074ewn_di" bpmnElement="Flow_0074ewn">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="280" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0dwdq37_di" bpmnElement="multi_user_task">
+        <dc:Bounds x="280" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1q2seip_di" bpmnElement="end">
+        <dc:Bounds x="452" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
